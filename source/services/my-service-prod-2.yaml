@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: "local-server"
+spec:
+  selector:
+    app: "my-server-prod-deployement"
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
+      nodePort: 32002
+  type: NodePort

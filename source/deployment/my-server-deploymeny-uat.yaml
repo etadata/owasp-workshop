@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-server-uat-deployement
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-server-uat-deployement
+    spec:
+      containers:
+      - name: my-server-uat-deployement
+        image: nginx:1.15.4-alpine
+        ports:
+        -  containerPort: 80

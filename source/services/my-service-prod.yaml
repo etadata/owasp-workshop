@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service-prod-2
+  labels:
+    app: my-service-prod
+spec:
+  ports:
+    - port: 8088
+      targetPort: 80
+      protocol: TCP
+      nodePort: 33001
+  type: NodePort

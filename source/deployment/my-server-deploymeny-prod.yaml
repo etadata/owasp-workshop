@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: my-server-prod-deployement
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: my-server-prod-deployement
+    spec:
+      containers:
+      - name: my-server-prod-deployement
+        image: nginx:1.15.4-alpine
+        ports:
+        -  containerPort: 80

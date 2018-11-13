@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: my-server-replicaset
+spec:
+  replicas: 2
+  selector:
+template:
+  metadata:
+    labels:
+      app: my-server-replicaset
+  spec:
+    containers:
+    - name: my-server-replicaset
+      image: nginx:1.15.4-alpine
+      ports:
+      -  containerPort: 80
