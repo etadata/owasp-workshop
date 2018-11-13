@@ -1,7 +1,6 @@
 # owasp-workshop: Orchetraing containers with Kubernetes
 
-This repo contains Docker and kubernetes labs. I welcome contributions and want to grow the repo.
-
+This repo contains Docker and kubernetes labs.
 ### Prerequisite knowledge
 - Experience using the Linux command line
 - A basic understanding of containers (useful but not required)
