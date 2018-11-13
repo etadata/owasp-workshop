@@ -49,7 +49,7 @@ If you have heard about Docker, containers and kubernetes, but haven't much (or 
 ## Outline
 
 ### Part 1 : Docker
-#### [Bring-UP](docker/docker-quickstart.md)
+#### [Bring-UP](docker/docker-quickstart.md) 
 #### [docker-part-1](docker/docker-part1.md)
 #### [docker-part-2](docker/docker-part2.md)
 #### [Penetration Lab](docker/docker-penetest-lab.md)
