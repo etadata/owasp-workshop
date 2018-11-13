@@ -1,5 +1,8 @@
 # Prerequisites
 
+You find here thw options on how to create a kubernetes cluster.
+
+
 -  **Option A : Kubernetes Engine**
     1. A Google Cloud Platform Account
     2. Enable the Kubernetes Engine
