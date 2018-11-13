@@ -47,10 +47,6 @@ This workshop is relevant for both developers and sysadmins,security professiona
 If you have heard about Docker, containers and kubernetes, but haven't much (or any!) experience yet, this will get you started with a fast-paced.
 
 ## Outline
-In this workshop we will divide the lab into two parts:
-
-1.  Docker 
-2.  Kubernetes
 
 ### Part 1 : Docker
 #### [Bring-UP](docker/docker-quickstart.md)
