@@ -5,7 +5,7 @@ Pods aren't meant to be persistent. They can be stopped or started for many reas
 
 What happens if we want to communicate with a set of Pods? When they get restarted they might have a different IP address.
 
-That's where ``Services``(lien) come in.
+That's where ``Services`` come in.
 
 A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a [``Label Selector`` ](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
 
