@@ -1,18 +1,8 @@
-
-
-
-
 ### Organizing pods with labels
 
+
 ###### Specifying labels when creating a pod
-###### Modifying labels of existing pods
-###### Listing subsets of pods through label selectors 
-###### Listing pods using a label selector
-###### Using multiple conditions in a label selector
-
-
-
-
+we will create two pods, and each one with a specific label
 
 nginx-label-dev.yaml
 ``` yaml
@@ -71,7 +61,7 @@ my-server-prod   1/1     Running   0          15s
 my-server-uat    1/1     Running   0          9s
 ```
 
-Selecting a pod by label
+###### Listing pods using a label selector
 ``` bash
 # kubectl  get pods -l app=my-server-dev
 NAME            READY   STATUS    RESTARTS   AGE
@@ -180,8 +170,6 @@ Events:
 
 
 
-
-
 ###### Update pod ' my-server-uat' with the label 'unhealthy' and the value 'true'.
 ``` bash 
 # kubectl label pods my-server-uat unhealthy=true
@@ -246,6 +234,7 @@ my-server-uat   1/1     Running   0          10m
 ```
 after you fix the issue of the pod you decide to make it healthy again, so you need to modify its label.
 
+###### Modifying labels of existing pods
 ```bash 
 # kubectl label pods my-server-uat unhealthy=false --overwrite
 pod/my-server-uat labeled
