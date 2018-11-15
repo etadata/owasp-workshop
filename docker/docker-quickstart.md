@@ -7,7 +7,7 @@ first and foremost you need to install the docker engine to be able to follow th
 You can dowload the VM from this repo which is already configured 
 or you can do the following steps to install docker into your machine
 >> this walkthrouth is for ubuntu 16.04
->> if you are using another OS please follo the steps mentionned in the official [doc](https://docs.docker.com/install/#supported-platforms)
+>> if you are using another OS please follow the steps mentionned in the official [doc](https://docs.docker.com/install/#supported-platforms)
 
 
 
@@ -23,7 +23,7 @@ $ sudo apt-get install \
     curl \
     software-properties-common
 ```
-3- Add Docker’s official GPG key:
+3- Add Dockerâ€™s official GPG key:
 
 ```bash
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
