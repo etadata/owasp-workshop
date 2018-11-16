@@ -282,8 +282,6 @@ my-server-uat-deployement-6bd65dfd9c-kvkdn    1/1     Running   0          28m
 my-server-uat-deployement-6bd65dfd9c-lsqz7    1/1     Running   0          28m
 ```
 
-explain ..... 
-
 >> **Note**: **Note**: You should not manage ReplicaSets owned by a Deployment. All the use cases should be covered by manipulating the Deployment object. Consider opening an issue in the main Kubernetes repository if your use case is not covered below.
 
 
