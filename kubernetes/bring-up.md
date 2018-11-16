@@ -7,9 +7,10 @@ You find here thw options on how to create a kubernetes cluster.
     1. A Google Cloud Platform Account
     2. Enable the Kubernetes Engine
     >> See the following resources to learn more:
-         >> 1.  [Google Kubernetes Engine - Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
-         >> 2.  [Google Kubernetes Engine - Tutorials](https://cloud.google.com/kubernetes-engine/docs/tutorials)
-         >> 3.  [Getting Started with Google Kubernetes Engine](https://www.coursera.org/learn/google-kubernetes-engine)
+   
+     >> 1.  [Google Kubernetes Engine - Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
+     >> 2.  [Google Kubernetes Engine - Tutorials](https://cloud.google.com/kubernetes-engine/docs/tutorials)
+     >> 3.  [Getting Started with Google Kubernetes Engine](https://www.coursera.org/learn/google-kubernetes-engine)
 
 -  **Option B: Create a Kubernetes Cluster on Ubuntu**
 
