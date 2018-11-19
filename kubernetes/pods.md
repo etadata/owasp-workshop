@@ -4,23 +4,23 @@ A pod (as in a pod of whales or pea pod) is a group of one or more containers (s
 and a specification for how to run the containers. A pod’s contents are always co-located and co-scheduled, and run in a shared context. A pod models an application-specific “logical host” - it contains one or more application containers which are relatively tightly coupled — in a pre-container world, being executed on the same physical or virtual machine would mean being executed on the same logical host.
 
 
-####  Create and Deploy Pod Definitions
+#### Create and Deploy Pod Definitions
 
 
 there are 2 kind of pods : 
 
     -  multiple pod 
-    -  signle pod 
+    -  single pod 
 
 
 ##### Single Container Pod using the command line
 
-They can be simply created with the kubctl run command, where you have a defined image on the Docker registry which we will pull while creating a pod.
+They can be simply created with the `kubctl run` command, where you have a defined image on the Docker registry which we will pull while creating a pod.
 
 lets create a single pod from the command line and test our image(webserver)
 
 ``` bash 
-# kubectl  run my-shell --rm -it --image abdelhalim/apache2:webserver bash 
+# kubectl run my-shell --rm -it --image abdelhalim/apache2:webserver bash 
 kubectl run --generator=deployment/apps.v1beta1 is DEPRECATED and will be removed in a future version. Use kubectl create instead.
 If you don't see a command prompt, try pressing enter.
 root@my-shell-79d55fccc6-r9wls:/# 
@@ -31,17 +31,17 @@ root@my-shell-79d55fccc6-r9wls:/# /etc/init.d/apache2 start
 root@my-shell-79d55fccc6-r9wls:/# curl http://localhost
 Helo Owasp Lab
 ```
-The ``--rm`` switch tells kubectl to delete the deployment and the pod once the command is run, while ``-ti`` asks it to attach a tty to the container, and make it connect to the stdin of the container process. 
+The `--rm` switch tells kubectl to delete the deployment and the pod once the command is run, while ``-ti`` asks it to attach a tty to the container, and make it connect to the stdin of the container process. 
 
-The ``--image`` argument specifies a lightweight alpine-based image with some debugging utilities, and the last argument is the command to use instead of the entry point of the container
+The `--image` argument specifies a lightweight alpine-based image with some debugging utilities, and the last argument is the command to use instead of the entry point of the container
 let's
 
->> the command ``kubernetes run`` create a Deployment. This can be seen by listing the deployments:
+> the command `kubernetes run` create a Deployment. This can be seen by listing the deployments:
 
 Create a pod from CLI :
 
 ``` bash 
-# kubectl run static-web      --image nginx   --image-pull-policy=IfNotPresent      --port=80
+# kubectl run static-web --image nginx --image-pull-policy=IfNotPresent --port=80
 ```
 get the pods 
 
@@ -54,7 +54,7 @@ static-web-74564475d9-9vltv          1/1     Running            0          3m1s
 get more information about our pod by using the command line describe
 
 ``` bash
-# kubectl  describe pod static-web-74564475d9-9vltv
+# kubectl describe pod static-web-74564475d9-9vltv
 Name:               static-web-74564475d9-9vltv
 Namespace:          default
 Priority:           0
@@ -105,20 +105,25 @@ Events:
   Normal  Started    5m33s  kubelet, node-1    Started container
 ```
 
-we see that our pod has been craeted inside the node-1
+we see that our pod has been created inside the node-1
 ```bash
-root@node-1:~# docker ps -l | grep nginx
+root@node-1:~# docker container ls -l | grep nginx
 12ca382d0971        dbfc48660aeb        "nginx -g 'daemon ..."   6 minutes ago       Up 6 minutes                            k8s_static-web_static-web-74564475d9-9vltv_default_605ed3aa-e1d3-11e8-9e2a-42010a840004_0
 ```
-if you like to go isnide the container or execute a specific command
+if you like to go inside the container or execute a specific command
 
 ``` bash 
-# docker ps -l
+# docker container ls -l
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
 12ca382d0971        dbfc48660aeb        "nginx -g 'daemon ..."   9 minutes ago       Up 9 minutes                            k8s_static-web_static-web-74564475d9-9vltv_default_605ed3aa-e1d3-11e8-9e2a-42010a840004_0
 root@node-1:~# docker exec -it k8s_static-web_static-web-74564475d9-9vltv_default_605ed3aa-e1d3-11e8-9e2a-42010a840004_0 /bin/bash
 root@static-web-74564475d9-9vltv:/#      
 
+```
+alternatively, you can execute a command using `kubectl` and the pod name:
+```bash
+# kubectl exec -it static-web-74564475d9-9vltv /bin/bash
+root@static-web-74564475d9-9vltv:/#    
 ```
 
 More Info about the pod 
@@ -269,7 +274,7 @@ More Info about the pod
 ```
 
 
-##### Creating pods from YAML  descriptor
+##### Creating pods from YAML descriptor
 
 edit the file web-server.yaml
 ``` yaml
@@ -305,7 +310,7 @@ get the logs of a secific pod
 
 
 ``` bash 
-# kubectl  get deployments
+# kubectl get deployments
 NAME         DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 static-web   1         1         1            1           15m
 ```
@@ -314,7 +319,7 @@ we will see what more info about the deployment later in this workshop
 
 ##### Multi Container Pod
 
-edit multi-container-pod.yaml  file 
+edit multi-container-pod.yaml file 
 ``` yaml
 apiVersion: v1
 kind: Pod
@@ -352,7 +357,7 @@ image : here
 
 
 ``` bash
-# kubectl create -f  multi-container-pod.yaml 
+# kubectl create -f multi-container-pod.yaml 
 pod/mc1 created
  # kubectl describe pod mc1
 Name:               mc1
@@ -447,7 +452,7 @@ Hello Owasp 2018    Tue Nov  6 15:53:43 UTC 2018
 
 see the logs of the 1st container of the pod mc1 
 ``` bash 
-# kubectl  logs mc1 1st
+# kubectl logs mc1 1st
 10.38.0.0 - - [06/Nov/2018:15:52:46 +0000] "GET / HTTP/1.1" 200 50 "-" "curl/7.47.0" "-"
 ```
 
@@ -477,7 +482,7 @@ kubectl top pod POD_NAME --containers               # Show metrics for a given p
 Expose the pod service 
 
 ``` bash 
-# kubectl  port-forward mc1 9955:80 &
+# kubectl port-forward mc1 9955:80 &
 [2] 6973
  # Forwarding from 127.0.0.1:9955 -> 80
 Forwarding from [::1]:9955 -> 80
@@ -487,7 +492,7 @@ tcp        0      0 127.0.0.1:9955          0.0.0.0:*               LISTEN      
 tcp6       0      0 ::1:9955                :::*                    LISTEN      6973/kubectl    
  # curl http://localhost:9955
 Handling connection for 9955
-Hello Owasp 2018    Tue Nov  6 16:00:45 UTC 2018 
+Hello Owasp 2018    Tue Nov  6 16:00:45 UTC 2018
 # # OR
 ## wget -qO- http://localhost:9955
 Handling connection for 9955
@@ -508,16 +513,17 @@ kubectl delete pod mc1
 #kubectl delete pods -l name=myLabel
 ```
 #### Delete all pods
-  kubectl delete pods --all
-
-
-
-More infor : use the command ``--help``
 ```bash
-# kubectl  delete --help
+kubectl delete pods --all
 ```
-### the deployment 
-when you craete the pod from the command line. kubernetes will create a deployment for you.
+
+
+More information, use the command `--help`:
+```bash
+# kubectl delete --help
+```
+### The deployment 
+when you create the pod from the command line. kubernetes will create a deployment for you.
 
 **``Deployments``** are one of the special kinds of resources in the Kubernetes world, in that they are responsible for managing the lifetime of application containers. These kinds of resources are called controllers, and they are central to the Kubernetes puzzle. You can get more detailed info about the new deployment with kubectl describe deployments simple-python-app
 
@@ -624,20 +630,19 @@ webserver   0/1     Completed   3          51s
 ```
 
 
-
-Create a pod from a cmmand line 
+Create a pod from a command line 
 
 ```bash
 kubectl run "type here the complete command" 
 ```
 
-access to pod service internally for expmle nginx or apache 
+access the pod service internally for example nginx or apache 
 ``` bash
 wget -q0- http://172.20.20.1
 ```
 
 
- #### get the documentation for pod and svc manifests
+ #### Get the documentation for pod and svc manifests
 ``` bash
-kubectl explain pods,svc                      
+kubectl explain pods,svc
 ```
