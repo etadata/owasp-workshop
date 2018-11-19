@@ -53,7 +53,7 @@ If you have heard about Docker, containers and kubernetes, but haven't much (or 
 #### [docker-part-2](docker/docker-part2.md)
 #### [Penetration Lab](docker/docker-penetest-lab.md)
 ### Part 2 : Kubernetes
-#### [Bring-UP](#)
+#### [Bring-UP](kubernetes/bring-up.md)
 #### [Kubernetes-part-1](kubernetes/pods.md)
 #### [Kubernetes-part-2](kubernetes/tag-labels.md)
 #### [Kubernetes-part-3](kubernetes/deployments.md)
