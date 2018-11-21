@@ -1,6 +1,8 @@
 # owasp-workshop: Orchetraing containers with Kubernetes
 
 This repo contains Docker and kubernetes labs.
+
+##### [Presentation of the lab](https://github.com/etadata/owasp-workshop/blob/master/Container%20Orchestration%20with%20Kubernetes.pdf)
 ### Prerequisite knowledge
 - Experience using the Linux command line
 - A basic understanding of containers (useful but not required)
