@@ -1,4 +1,4 @@
-# owasp-workshop: Orchetraing containers with Kubernetes
+# owasp-workshop: Orchestraing containers with Kubernetes
 
 This repo contains Docker and kubernetes labs.
 
